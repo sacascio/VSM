@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #!/usr/bin/env python
 
 import json
@@ -61,3 +62,5 @@ def main(argv):
 
 if __name__ == '__main__':
     main(sys.argv[1:])
+=======
+>>>>>>> origin/master
