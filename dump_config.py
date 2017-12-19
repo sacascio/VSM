@@ -50,19 +50,21 @@ def main(argv):
     ip       = '10.90.56.84'
     username = 'administrator'
     password = 'CopAdmin1'
+    methods  = ('resources','users')
+    final    = []
     
     token = gettoken(ip,port,username,password)
 
-    data = getdata(ip,port,token,"/vsm/resources")
-    print str(len(data)) + " record"
-    for d in data:
-        print d['ipAddress']
-        print d['swVersion']
-        print d['type']
-        print d['name']
-
-    data = getdata(ip,port,token,"/vsm/lineups")
-    print data
+    for m in methods:
+        data = getdata(ip,port,token,"/vsm/%s" % m)
+        for d in data:
+            d['apicall'] = m
+            
+        final.extend(data)
+    
+    for key in final:
+        for value in key:
+            print value + "," + str(key[value])
 
 if __name__ == '__main__':
     main(sys.argv[1:])
