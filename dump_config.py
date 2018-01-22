@@ -3,6 +3,9 @@
 import json
 import requests
 import sys
+import warnings
+
+warnings.filterwarnings("ignore")
 
 def gettoken(ip,port,username,password):
     
